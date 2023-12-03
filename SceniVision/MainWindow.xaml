@@ -1,0 +1,366 @@
+﻿<Window
+    x:Class="SceniVision.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:SceniVision"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="Calculator"
+    Width="360"
+    Height="490"
+    mc:Ignorable="d">
+    
+    <Window.Background>
+        <SolidColorBrush Color="#F2F2F2"/>
+    </Window.Background>
+
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Margin" Value="2"/>
+            <Setter Property="Background" Value="#B0BEC5"/>
+        </Style>
+        <Style x:Key="OperatorButton" TargetType="Button">
+            <Setter Property="Margin" Value="2"/>
+            <Setter Property="Background" Value="#607D8B"/>
+        </Style>
+        <Style x:Key="AdvancedFunctionsButton" TargetType="Button">
+            <Setter Property="Margin" Value="2"/>
+            <Setter Property="Background" Value="#388E3C"/>
+        </Style>
+        <Style x:Key="ClearButton" TargetType="Button">
+            <Setter Property="Margin" Value="2"/>
+            <Setter Property="Background" Value="#EF5350"/>
+            <Setter Property="Foreground" Value="WhiteSmoke"/>
+        </Style>
+        <Style x:Key="EqualsButton" TargetType="Button">
+            <Setter Property="Margin" Value="2"/>
+            <Setter Property="Background" Value="#1976D2"/>
+        </Style>
+        <Style x:Key="MemoryButton" TargetType="Button">
+            <Setter Property="Margin" Value="2"/>
+            <Setter Property="Background" Value="#BA68C8"/>
+        </Style>
+        <Style x:Key="HistoryButton" TargetType="Button">
+            <Setter Property="Margin" Value="2"/>
+            <Setter Property="Background" Value="#393939 "/>
+            <Setter Property="Foreground" Value="WhiteSmoke"/>
+        </Style>
+    </Window.Resources>
+
+    <Grid Margin="5">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="2*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Button
+            x:Name="btnHistory"
+            Grid.Row="0"
+            Grid.Column="0"
+            Click="btnHistory_Click"
+            Content="▼"
+            FontSize="25"
+            FontWeight="Bold"
+            Style="{StaticResource HistoryButton}"/>
+
+        <TextBlock
+            x:Name="txbTemp"
+            Grid.Row="1"
+            Grid.Column="0"
+            Grid.ColumnSpan="3"
+            Margin="10"
+            VerticalAlignment="Center"
+            FontSize="15"
+            TextAlignment="Right" />
+
+        <TextBlock
+            x:Name="txbOprator"
+            Grid.Row="1"
+            Grid.Column="3"
+            Margin="10"
+            VerticalAlignment="Center"
+            FontSize="25"
+            TextAlignment="Center" />
+
+        <TextBlock
+            x:Name="txbMemory"
+            Grid.Row="1"
+            Grid.Column="4"
+            Margin="10"
+            VerticalAlignment="Center"
+            FontSize="25"
+            TextAlignment="Center" />
+
+        <Border
+            Grid.Row="2"
+            Grid.Column="0"
+            Grid.ColumnSpan="5"
+            Background="WhiteSmoke"
+            BorderBrush="Black"
+            BorderThickness="2"
+            CornerRadius="5"
+            Margin="5"/>
+
+        <TextBlock
+            x:Name="txbOutPut"
+            Grid.Row="2"
+            Grid.Column="0"
+            Grid.ColumnSpan="5"
+            Margin="10"
+            VerticalAlignment="Center"
+            FontSize="40"
+            TextAlignment="Right" />
+
+        <Button
+            x:Name="btnMemAdd"
+            Grid.Row="3"
+            Grid.Column="0"
+            Click="btnMemAdd_Click"
+            Content="M+"
+            FontSize="25"
+            FontWeight="Bold" 
+            Style="{StaticResource MemoryButton}"/>
+
+        <Button
+            x:Name="btnMemSub"
+            Grid.Row="3"
+            Grid.Column="1"
+            Click="btnMemSub_Click"
+            Content="M-"
+            FontSize="25"
+            FontWeight="Bold" 
+            Style="{StaticResource MemoryButton}"/>
+
+        <Button
+            x:Name="btnMemAssign"
+            Grid.Row="3"
+            Grid.Column="2"
+            Click="btnMemAssign_Click"
+            Content="M"
+            FontSize="25"
+            FontWeight="Bold" 
+            Style="{StaticResource MemoryButton}"/>
+
+        <Button
+            x:Name="btnBackSpace"
+            Grid.Row="3"
+            Grid.Column="3"
+            Click="btnBackSpace_Click"
+            Content="«"
+            FontSize="25"
+            FontWeight="Bold" />
+
+        <Button
+            x:Name="btnPercentage"
+            Grid.Row="3"
+            Grid.Column="4"
+            Click="btnPercentage_Click"
+            Content="%"
+            FontSize="25"
+            FontWeight="Bold" 
+            Style="{StaticResource AdvancedFunctionsButton}"/>
+
+        <Button
+            x:Name="btnSeven"
+            Grid.Row="4"
+            Grid.Column="0"
+            Click="NumBtn_Click"
+            Content="7"
+            FontSize="25"
+            FontWeight="Bold" />
+
+        <Button
+            x:Name="btnEight"
+            Grid.Row="4"
+            Grid.Column="1"
+            Click="NumBtn_Click"
+            Content="8"
+            FontSize="25"
+            FontWeight="Bold" />
+
+        <Button
+            x:Name="btnNine"
+            Grid.Row="4"
+            Grid.Column="2"
+            Click="NumBtn_Click"
+            Content="9"
+            FontSize="25"
+            FontWeight="Bold" />
+
+        <Button
+            x:Name="btnDevide"
+            Grid.Row="4"
+            Grid.Column="3"
+            Click="OpperatorBtn_Click"
+            Content="÷"
+            FontSize="25"
+            FontWeight="Bold" 
+            Style="{StaticResource OperatorButton}"/>
+
+        <Button
+            x:Name="btnFraction"
+            Grid.Row="4"
+            Grid.Column="4"
+            Click="btnFraction_Click"
+            Content="­­¹/x"
+            FontSize="25"
+            FontWeight="Bold"
+            Style="{StaticResource AdvancedFunctionsButton}" />
+
+        <Button
+            x:Name="btnFour"
+            Grid.Row="5"
+            Grid.Column="0"
+            Click="NumBtn_Click"
+            Content="4"
+            FontSize="25"
+            FontWeight="Bold" />
+
+        <Button
+            x:Name="btnFive"
+            Grid.Row="5"
+            Grid.Column="1"
+            Click="NumBtn_Click"
+            Content="5"
+            FontSize="25"
+            FontWeight="Bold" />
+
+        <Button
+            x:Name="btnSix"
+            Grid.Row="5"
+            Grid.Column="2"
+            Click="NumBtn_Click"
+            Content="6"
+            FontSize="25"
+            FontWeight="Bold" />
+
+        <Button
+            x:Name="btnMultiply"
+            Grid.Row="5"
+            Grid.Column="3"
+            Click="OpperatorBtn_Click"
+            Content="x"
+            FontSize="25"
+            FontWeight="Bold" 
+            Style="{StaticResource OperatorButton}"/>
+
+        <Button
+            x:Name="btnSquareRoot"
+            Grid.Row="5"
+            Grid.Column="4"
+            Click="btnSquareRoot_Click"
+            Content="√"
+            FontSize="25"
+            FontWeight="Bold" 
+            Style="{StaticResource AdvancedFunctionsButton}"/>
+
+        <Button
+            x:Name="btnOne"
+            Grid.Row="6"
+            Grid.Column="0"
+            Click="NumBtn_Click"
+            Content="1"
+            FontSize="25"
+            FontWeight="Bold" />
+
+        <Button
+            x:Name="btnTwo"
+            Grid.Row="6"
+            Grid.Column="1"
+            Click="NumBtn_Click"
+            Content="2"
+            FontSize="25"
+            FontWeight="Bold" />
+
+        <Button
+            x:Name="btnThree"
+            Grid.Row="6"
+            Grid.Column="2"
+            Click="NumBtn_Click"
+            Content="3"
+            FontSize="25"
+            FontWeight="Bold" />
+
+        <Button
+            x:Name="btnSubtract"
+            Grid.Row="6"
+            Grid.Column="3"
+            Click="OpperatorBtn_Click"
+            Content="-"
+            FontSize="25"
+            FontWeight="Bold" 
+            Style="{StaticResource OperatorButton}"/>
+
+        <Button
+            x:Name="btnSquare"
+            Grid.Row="6"
+            Grid.Column="4"
+            Click="btnSquare_Click"
+            Content="x²"
+            FontSize="25"
+            FontWeight="Bold" 
+            Style="{StaticResource AdvancedFunctionsButton}"/>
+
+        <Button
+            x:Name="btnClear"
+            Grid.Row="7"
+            Grid.Column="0"
+            Click="btnClear_Click"
+            Content="C"
+            FontSize="25"
+            FontWeight="Bold" 
+            Style="{StaticResource ClearButton}"/>
+
+        <Button
+            x:Name="btnZero"
+            Grid.Row="7"
+            Grid.Column="1"
+            Click="NumBtn_Click"
+            Content="0"
+            FontSize="25"
+            FontWeight="Bold" />
+
+        <Button
+            x:Name="btnEquals"
+            Grid.Row="7"
+            Grid.Column="2"
+            Click="btnEquals_Click"
+            Content="="
+            FontSize="25"
+            FontWeight="Bold" 
+            Style="{StaticResource EqualsButton}"/>
+
+        <Button
+            x:Name="btnAdd"
+            Grid.Row="7"
+            Grid.Column="3"
+            Click="OpperatorBtn_Click"
+            Content="+"
+            FontSize="25"
+            FontWeight="Bold" 
+            Style="{StaticResource OperatorButton}"/>
+
+        <Button
+            x:Name="btnDecimal"
+            Grid.Row="7"
+            Grid.Column="4"
+            Click="NumBtn_Click"
+            Content=","
+            FontSize="25"
+            FontWeight="Bold" />
+
+    </Grid>
+</Window>
